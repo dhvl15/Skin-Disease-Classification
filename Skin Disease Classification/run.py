@@ -21,7 +21,7 @@ app = Flask(__name__)
 
 input_img_path = 'static/images/input_img.jpg'
 
-# Load Model
+# Load Modeladsasadasd
 model = load_model('static/weather_model.h5')
 graph = tf.get_default_graph()
 
