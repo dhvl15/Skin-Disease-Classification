@@ -1,2 +1,0 @@
-# Skin Disease Detection
- 
