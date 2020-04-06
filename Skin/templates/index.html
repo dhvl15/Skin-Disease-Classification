@@ -1,0 +1,150 @@
+<html>
+
+  <head>
+    <title>megh</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/loader.css')}}">
+  </head>
+
+  <body style="background: #EFF4F7";>
+    <div class="container-fluid" style="margin-top:2%;">
+      <div class="row">
+        <div class="col col-lg-3"></div>
+        <div class="col col-lg-6">
+          <div class="card shadow p-3 mb-5 bg-white rounded">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+            <div class="custom-file mb-3">
+              <input onchange="readURL(this);" type=file class="custom-file-input" id="multiFiles" name="files[]" multiple="multiple">
+              <label class="custom-file-label" for="customFile">Choose file</label>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+
+    
+      <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-2">
+          <button id=upload class="btn btn-success">Submit</button><br><br>
+          </div>
+          <div class="col-lg-5"></div>
+        </div>
+
+        </div> 
+      </div>
+      <div class="col col-lg-3"></div>
+    </div>
+
+        <div class="card shadow p-3 mb-5 bg-white rounded">
+          <div class="row"><div class="col-lg-3"></div>
+            <div class="col-lg-6"><p id="imgdim">Resolution: </p>
+                <img class="img-fluid" id="showimg" src="#"/><br><br>
+            </div>
+            <div class="col-lg-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <!-- <p class="font-weight-bold" id="bd">Output Class</p> -->
+              <p class="font-weight-bold" id="output">Predicted Output</p>
+              <p id="ben_acc"></p>
+              <p id="mal_acc"></p>
+              <p id="time"></p>
+            </div>
+            
+          </div>        
+        </div>
+        
+  </div>
+
+  <div id="loader"></div>
+</body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript">
+  var file_name;
+	$('#searchtype a').on('click', function(){    
+      $('#searchtype1').html($(this).html());    
+  })
+  $('#prepr a').on('click', function(){    
+      $('#prepr1').html($(this).html());    
+  })
+  
+  //Preview Image
+  function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                var img = new Image;
+
+                img.src = reader.result;
+                img.onload = function() {
+                  $('#imgdim').text('Resolution: '+img.width.toString()+'x'+img.height.toString());
+                };
+                  $('#showimg')
+                      .attr('src', e.target.result);
+              };
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+
+      $('#multiFiles').on('change',function(){
+            $(this).next('.custom-file-label').html($(this).val().replace(/^.*[\\\/]/, ''));
+            file_name = $(this).val().replace(/^.*[\\\/]/, '');
+        });
+
+      function showloader(){
+        document.getElementById("loader").style.display = "block";
+      }
+
+		$(document).ready(function (e) {
+      document.getElementById("loader").style.display = "none";
+			$('#upload').on('click', function () {
+        
+				var form_data = new FormData();
+  
+        form_data.append("file_name",file_name);
+        
+
+				var ins = document.getElementById('multiFiles').files.length;
+
+				if(ins == 0) {
+          alert('No file selected');
+          return;
+				} 
+				
+			  for (var x = 0; x < ins; x++) {
+					form_data.append("files[]", document.getElementById('multiFiles').files[x]);
+				}
+        
+				$.ajax({
+					  type: 'POST',
+            url: '/process_img',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+          beforeSend: function(){
+            document.getElementById("loader").style.display = "block";
+          },
+          complete:function(data){
+            document.getElementById("loader").style.display = "none";
+          },
+					success: function (data) {
+						document.getElementById("ben_acc").innerHTML = "Benign Accuracy: "+data['ben_acc'];
+            document.getElementById("mal_acc").innerHTML = "Malignant Accuracy: "+data['mal_acc'];
+						document.getElementById("output").innerHTML = data['output'];
+						document.getElementById("time").innerHTML = "Time Taken: "+data['time'];
+					},	
+				});
+			});
+		});
+	</script>
+
+</html>
