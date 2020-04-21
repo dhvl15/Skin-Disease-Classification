@@ -1,0 +1,189 @@
+<html>
+    <head>
+      <link rel="stylesheet" href="css/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+      <title>Sign in</title>
+        <style>
+            body {
+                background-color: rgb(255, 255, 255);
+                font-family: 'Ubuntu', sans-serif;
+            }
+            
+            .main {
+                background-color: rgb(255, 255, 255);
+                width: 30%;
+                height: 105%;
+                margin: 7em auto;
+                border-radius: 0.5em;
+                box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.5);
+            }
+            
+            .sign {
+                padding-top: 40px;
+                color: rgb(0, 0, 0);
+                font-family: 'Ubuntu', sans-serif;
+                font-weight: bold;
+                font-size: 23px;
+            }
+            
+            .un {
+            width: 76%;
+            color: rgb(38, 50, 56);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            background: rgba(0, 0, 0, 0.04);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            box-sizing: border-box;
+            border: 2px solid rgba(0, 0, 0, 0.02);
+            margin-bottom: 50px;
+            margin-left: 46px;
+            text-align: center;
+            margin-bottom: 27px;
+            font-family: 'Ubuntu', sans-serif;
+            }
+            
+            form.form1 {
+                padding-top: 40px;
+            }
+            
+            .pass {
+            width: 76%;
+            color: rgb(38, 50, 56);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            background: rgba(136, 126, 126, 0.04);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            box-sizing: border-box;
+            border: 2px solid rgba(0, 0, 0, 0.02);
+            margin-bottom: 50px;
+            margin-left: 46px;
+            text-align: center;
+            margin-bottom: 27px;
+            font-family: 'Ubuntu', sans-serif;
+            }
+            
+        
+            .un:focus, .pass:focus {
+                border: 2px solid rgba(0, 0, 0, 0.18) !important;
+                
+            }
+            
+            .submit {
+            cursor: pointer;
+                border-radius: 5em;
+                color: #fff;
+                background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+                border: 0;
+                padding-left: 40px;
+                padding-right: 40px;
+                padding-bottom: 10px;
+                padding-top: 10px;
+                font-family: 'Ubuntu', sans-serif;
+                margin-left: 35%;
+                font-size: 13px;
+                box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+            }
+            
+            .forgot {
+                text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+                color: rgb(0, 0, 0);
+                padding-top: 15px;
+            }
+            
+            a {
+                text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+                color: rgb(0, 0, 0);
+                text-decoration: none
+            }
+            
+            @media (max-width: 600px) {
+                .main {
+                    border-radius: 0px;
+                    }
+            }
+        </style>
+        </head>
+        <script type="text/javascript">      
+            function validateform()
+            {
+                var number = document.pat_regform.num.value;
+                var x=document.pat_regform.email.value;  
+                var atposition=x.indexOf("@");  
+                var dotposition=x.lastIndexOf(".");
+                var sex=document.pat_regform.sex.value;
+                var y=document.pat_regform.doc_email.value;  
+                var atposition1=y.indexOf("@");  
+                var dotposition1=y.lastIndexOf(".");
+                var password = document.pat_regform.password.value;
+                var re_password = document.pat_regform.re_password.value;
+                
+                if (isNaN(number) && number.length<11)
+                {  
+                    alert("Enter numeric values in you phone number");  
+                    beep.play();
+                    return false;  
+                }
+                if (number.length<11)
+                {  
+                    alert("Enter correct phone number");  
+                    beep.play();
+                    return false;  
+                }
+                if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length)
+                {  
+                    alert("Please enter a valid e-mail address");  
+                    beep.play();
+                    return false;  
+                }   
+                if (atposition1<1 || dotposition1<atposition1+2 || dotposition1+2>=y.length)
+                {  
+                    alert("Please enter a valid  doctor's e-mail address");  
+                    beep.play();
+                    return false;  
+                }
+                if(password.length<6)
+                {
+                    alert("Password should be greater than 6 characters");
+                    beep.play();
+                    return false;
+                } 
+                if(password!==re_password)
+                {
+                    alert("Passwords don't match")
+                    beep.play();
+                    return false;
+                }
+                          
+            }
+        </script>
+        <script>
+            var beep = new Audio();
+                beep.src = "horse.mp3"
+        </script>
+    <body>
+      <div class="main">
+        <p class="sign" align="center">Sign Up</p>
+        <form class="pat_form" name="pat_regform" method="post" action="/register" onsubmit="return validateform()">
+          <input class="un " type="text" align="center" placeholder="Name" name="name" required>
+          <input class="un " type="text" align="center" placeholder="Phone Number" name="num" required>
+          <input class="un " type="text" align="center" placeholder="Email ID" name="email" required>
+          <input class="un " type="text" align="center" placeholder="male/female" name="sex" required>
+          <input class="un " type="text" align="center" placeholder="Doctor's Email ID" name="doc_email" required>
+          <input class="pass" type="password" align="center" placeholder="Password" name="password" required>
+          <input class="pass" type="password" align="center" placeholder="Re-Enter Password" name="re_password" required>
+          <input type="submit" class="submit" align="center">
+          <p class="forgot" align="center"><a href="#" onmousedown="beep.play()"></p>
+        </div>     
+    </body>
+    
+    </html>
