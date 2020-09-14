@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+body {
+  font-family: "Ludicia bright",'Geneva';
+}
+
+#intro
+{ 
+  background-color: rgb(255, 255, 255);
+  width: 900px;
+  border: 15px solid rgb(0, 0, 0);
+  padding: 50px;
+  margin: 10px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #3f6188;
+  overflow-x: hidden;
+  padding-top: 50px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #c0c0c0;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+input[type=text] {
+  width: 600px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color:rgb(76, 155, 175);
+  color: white;
+  border-radius: 7px;
+}
+
+input[type=submit] {
+  background-color: rgb(76, 155, 175);
+  color: white;
+  padding: 12px 20px;
+  margin-left: 60px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+
+input[type=submit]:hover {
+  background-color: #3f6188;
+}
+
+.button {
+  background-color: rgb(76, 155, 175);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* White blood cells (WBCs). Red blood cells (RBC). Hemoglobin (Hb or Hgb).*/
+
+</style>
+</head>
+<body>
+
+<div class="sidenav">
+  <a href="#about">Previous Scans</a>
+  <a href="#services">Doctors</a>
+  <a href="#clients">Services</a>
+  <a href="#contact">Log Out</a>
+</div>
+
+<div class="main">  
+    <h2>Hello, Megh Gala</h2>
+    <p id = "intro">In order to use our system, you need to click on the link below and upload a picture of the affected area.
+         And then return to this page and add some necessary data in the form below.
+        <br><a href="#" class="button">SCAN</a></p>
+         <form>
+          <label for="fname">&nbsp;&nbsp;&nbsp;White blood cells&nbsp;&nbsp;</label>
+          <input type="text" id="fname" name="fname"><br>
+          <label for="lname">&nbsp;&nbsp;&nbsp;Red blood cells&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <input type="text" id="lname" name="lname"><br>
+          <label for="lname">&nbsp;&nbsp;&nbsp;Hemoglobin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <input type="text" id="lname" name="lname"><br><br>
+          <input type="submit" value="Submit"> 
+        </form>
+</div>
+   
+</body>
+</html> 

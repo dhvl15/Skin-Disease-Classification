@@ -1,0 +1,7 @@
+------------PATIENT REGISTER------------------
+pat_reg() --- opens patient_reg.html
+reg() --- stores in db
+
+----------PATIENT LOGIN--------------------
+pat_login() ---- opens login.html
+login() --- checks db

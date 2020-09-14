@@ -7,14 +7,13 @@ app = Flask(__name__)
 cur,conn = connection()
 
 @app.route('/patient_register')
-def index():
+def pat_reg():
     return render_template('patient_reg.html')
 
 
 @app.route('/register',methods=["GET","POST"]) 
 def register():
     try:
-        cur, conn = connection()
         rname = request.form['name']
         rnum = request.form['num']
         remail = request.form['email']
@@ -25,7 +24,8 @@ def register():
         cur.execute("INSERT INTO patient (p_name,p_num,p_email,p_gender,p_doc_email,p_password) VALUES (%s,%s,%s,%s,%s,%s)",(rname,rnum,remail,rsex,rdoc_email,hashed_password))
         conn.commit()
         return "success"
-       
+    except Exception as e:
+        return(str(e))
 
 if __name__ == "__main__":
     app.run(debug=True)

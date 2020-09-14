@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from dbconnect import connection
+from pat_reg import pat_reg,register
 from passlib.hash import md5_crypt
 
 app = Flask(__name__)
@@ -19,8 +20,8 @@ def getinfo(lpin):
     name = cur.fetchall()[0][1]
     return doc_id, name
 
-@app.route('/register',methods=["GET","POST"])
-def register():
+@app.route('/login',methods=["GET","POST"])
+def login():
     try:
         #print(md5_crypt.hash('modi'))
         cur, conn = connection()
@@ -41,8 +42,8 @@ def register():
     
 
 
-@app.route('/login')
-def login():
+@app.route('/patient_login')
+def pat_login():
     return render_template('login.html',title='login')
 
 if __name__ == "__main__":
