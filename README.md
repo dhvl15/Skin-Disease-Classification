@@ -19,5 +19,12 @@ Screenshots of the project.
 ## Login Page
 ![Login Page](https://github.com/meghgala/Skin-Disease-Classification/blob/master/skin_login.png)
 
-## Login Page
-![Login Page](https://github.com/meghgala/Skin-Disease-Classification/blob/master/skin_login.png)
+## Patient Dashboard
+![Patient Dashboard](https://github.com/meghgala/Skin-Disease-Classification/blob/master/patdash_skin.png)
+
+![Patient Dashboard](https://github.com/meghgala/Skin-Disease-Classification/blob/master/beforescan.png)
+
+![Patient Dashboard](https://github.com/meghgala/Skin-Disease-Classification/blob/master/afterscan.png)
+
+## Database
+![Patient Dashboard](https://github.com/meghgala/Skin-Disease-Classification/blob/master/skindb.png)
