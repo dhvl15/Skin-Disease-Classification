@@ -26,5 +26,3 @@ Screenshots of the project.
 
 ![Patient Dashboard](https://github.com/meghgala/Skin-Disease-Classification/blob/master/afterscan.png)
 
-## Database
-![Patient Dashboard](https://github.com/meghgala/Skin-Disease-Classification/blob/master/skindb.png)
